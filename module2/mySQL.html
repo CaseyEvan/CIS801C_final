@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-size: 16px;
+    background-color: #F0EDE5;
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #C0AB8E;
+}
+
+.active {
+    background-color: #BCBCBE;
+    color: black;
+}
+
+p {
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2><img src="https://images.cooltext.com/5205992.png"/></a>
+  <p></p>
+</div>
+
+<ul>
+  <li><a href="http://dnsfmwad.centralus.cloudapp.azure.com/Module_02/Project/home.html">Home</a></li>
+  <li><a href="http://dnsfmwad.centralus.cloudapp.azure.com/Module_03/Project/men.html">Men's</a></li>
+  <li><a href="http://dnsfmwad.centralus.cloudapp.azure.com/Module_03/Project/women.html">Woman's</a></li>
+  <li><a href="http://dnsfmwad.centralus.cloudapp.azure.com/Module_03/Project/faq.html">FAQ</a></li>
+  <li><a href="http://dnsfmwad.centralus.cloudapp.azure.com/Module_03/Project/contact.html">Contact us</a></li>
+  <li><a class="active" href="http://dnsfmwad.centralus.cloudapp.azure.com/Module_03/Project/contact.html">My SQL</a></li>
+</ul>
+
+<?php
+//Allow Headers
+header('Access-Control-Allow-Origin: *');
+//$servername = "localhost:3306";
+$servername = "dnsfmwad.centralus.cloudapp.azure.com:3306";
+$username = "Casey";
+$password = "Juggalojuggalo59";
+$dbname = "demo";
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error)
+    echo "Error: Unexpected connection error. Please retry the operation.";
+else
+ {
+    $result = $conn->query("SELECT * FROM test");
+    if (($result != 0) && ($result->num_rows > 0))
+      {
+         $row = $result->fetch_assoc();
+         $A = $row['A'];
+         $B = $row['B'];
+         $C = $row['C'];
+         $D = $row['D'];
+         echo $A;
+         echo $B;
+         echo $C;
+         echo $D;
+      }
+    $conn->close();
+}
+?>
+
+<h3></h3>
+
+
+
+</body>
+</html>
